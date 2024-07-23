@@ -1,6 +1,6 @@
 import { Seller } from "../src/seller";
 import { Employee,Manager } from "../src/employee";
-
+import { Person } from "../src/person";
 describe('Interface', function () {
     it('should support in typescript', function () {
         const seller: Seller = {
@@ -61,16 +61,36 @@ describe('Interface', function () {
         console.info(manager);
     });
     it('should support function inside interface', function () {
-        interface Person{
-            name: string;
-            sayHello(name: string): string;
-        };
         const person: Person = {
             name: 'Ridart',
             sayHello: (name: string): string => {
                 return `Hello ${name}, my name is ${person.name}`;
             }
         };
-        console.info(person.sayHello('Hary'));
+        console.info(person);
     });
-})
+    it('should support intersection types',function(){
+        interface HasName{
+            name: string;
+        };
+        interface HasId{
+            id: number;
+        };
+        type Domain = HasId & HasName;
+
+        const domain: Domain = {
+            id: 1,
+            name:'Hary'
+        };
+        console.info(domain);
+    });
+    it('should support type assertions',function(){
+        const person:any = {
+            name:'Hary',
+            age:15
+        };
+        const person2 : Person = person as Person;
+        console.info(person2);
+        // person2.sayHello('Hary'); produce error because sayHello() no longer exist in asserted type;
+    });
+});

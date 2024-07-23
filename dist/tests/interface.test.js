@@ -52,14 +52,31 @@ describe('Interface', function () {
         console.info(manager);
     });
     it('should support function inside interface', function () {
-        ;
         const person = {
             name: 'Ridart',
             sayHello: (name) => {
                 return `Hello ${name}, my name is ${person.name}`;
             }
         };
-        console.info(person.sayHello('Hary'));
+        console.info(person);
+    });
+    it('should support intersection types', function () {
+        ;
+        ;
+        const domain = {
+            id: 1,
+            name: 'Hary'
+        };
+        console.info(domain);
+    });
+    it('should support type assertions', function () {
+        const person = {
+            name: 'Hary',
+            age: 15
+        };
+        const person2 = person;
+        console.info(person2);
+        // person2.sayHello('Hary'); produce error because sayHello() no longer exist in asserted type;
     });
 });
 export {};
