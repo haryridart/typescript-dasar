@@ -1,4 +1,5 @@
 import { Seller } from "../src/seller";
+import { Employee,Manager } from "../src/employee";
 
 describe('Interface', function () {
     it('should support in typescript', function () {
@@ -41,5 +42,35 @@ describe('Interface', function () {
         };
         expect(dictionary.name).toBe('Hary');
         expect(dictionary.address).toBe('Indonesia');
-    })
+    });
+    it('should support extend interface', function () {
+        const employee: Employee = {
+            id: 1,
+            name: 'Hary',
+            salary: 1000000,
+            division: 'IT'
+        };
+        const manager: Manager = {
+            id: 1,
+            name: 'Hary',
+            salary: 1000000,
+            division: 'IT',
+            department: 'IT Team'
+        };
+        console.info(employee);
+        console.info(manager);
+    });
+    it('should support function inside interface', function () {
+        interface Person{
+            name: string;
+            sayHello(name: string): string;
+        };
+        const person: Person = {
+            name: 'Ridart',
+            sayHello: (name: string): string => {
+                return `Hello ${name}, my name is ${person.name}`;
+            }
+        };
+        console.info(person.sayHello('Hary'));
+    });
 })

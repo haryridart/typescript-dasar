@@ -34,5 +34,32 @@ describe('Interface', function () {
         expect(dictionary.name).toBe('Hary');
         expect(dictionary.address).toBe('Indonesia');
     });
+    it('should support extend interface', function () {
+        const employee = {
+            id: 1,
+            name: 'Hary',
+            salary: 1000000,
+            division: 'IT'
+        };
+        const manager = {
+            id: 1,
+            name: 'Hary',
+            salary: 1000000,
+            division: 'IT',
+            department: 'IT Team'
+        };
+        console.info(employee);
+        console.info(manager);
+    });
+    it('should support function inside interface', function () {
+        ;
+        const person = {
+            name: 'Ridart',
+            sayHello: (name) => {
+                return `Hello ${name}, my name is ${person.name}`;
+            }
+        };
+        console.info(person.sayHello('Hary'));
+    });
 });
 export {};
